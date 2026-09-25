@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>QR Code Generator</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <button id="close" type="button" class="close" title="Close" aria-label="Close">
+      <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+        <path d="M3.5 3.5l9 9M12.5 3.5l-9 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+      </svg>
+    </button>
+    <section class="preview">
+      <div id="qr" class="qr" aria-live="polite"></div>
+      <p id="error" class="error" hidden></p>
+    </section>
+
+    <label class="field">
+      <span>URL</span>
+      <input id="url" type="url" spellcheck="false" placeholder="https://example.com">
+    </label>
+
+    <details id="utm-section" class="group">
+      <summary>UTM parameters <span id="utm-count" class="badge" hidden></span></summary>
+      <div class="grid">
+        <label class="field"><span>Source</span><input data-utm="utm_source" placeholder="newsletter"></label>
+        <label class="field"><span>Medium</span><input data-utm="utm_medium" placeholder="print"></label>
+        <label class="field"><span>Campaign</span><input data-utm="utm_campaign" placeholder="spring_sale"></label>
+        <label class="field"><span>Term</span><input data-utm="utm_term" placeholder="running+shoes"></label>
+        <label class="field wide"><span>Content</span><input data-utm="utm_content" placeholder="flyer_a"></label>
+      </div>
+      <div id="custom-params"></div>
+      <div class="row">
+        <button id="add-param" type="button" class="link">+ Custom parameter</button>
+        <button id="clear-utm" type="button" class="link">Clear all</button>
+      </div>
+      <label class="check">
+        <input id="remember" type="checkbox" checked>
+        <span>Remember parameters</span>
+      </label>
+    </details>
+
+    <label class="field">
+      <span>Error correction</span>
+      <select id="ecl">
+        <option value="L">Low (7%)</option>
+        <option value="M" selected>Medium (15%)</option>
+        <option value="Q">Quartile (25%)</option>
+        <option value="H">High (30%)</option>
+      </select>
+    </label>
+
+    <div class="final">
+      <code id="final-url" title="Encoded URL"></code>
+    </div>
+
+    <div class="actions">
+      <button id="copy" type="button" class="secondary">Copy URL</button>
+      <button id="download" type="button" class="primary">Download SVG</button>
+    </div>
+  </main>
+
+  <template id="param-row">
+    <div class="param-row">
+      <input class="key" placeholder="key" spellcheck="false">
+      <input class="value" placeholder="value" spellcheck="false">
+      <button type="button" class="remove" title="Remove">&times;</button>
+    </div>
+  </template>
+
+  <script src="lib/qrcode.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

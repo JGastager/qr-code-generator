@@ -1,0 +1,266 @@
+:root {
+  --bg: #ffffff;
+  --surface: #f4f5f7;
+  --border: #d9dce1;
+  --text: #1c1e21;
+  --muted: #65676b;
+  --accent: #1a73e8;
+  --accent-text: #ffffff;
+  --error: #c5221f;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #202124;
+    --surface: #2b2c2f;
+    --border: #3c4043;
+    --text: #e8eaed;
+    --muted: #9aa0a6;
+    --accent: #8ab4f8;
+    --accent-text: #202124;
+    --error: #f28b82;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  width: 340px;
+  background: var(--bg);
+  color: var(--text);
+  font: 13px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* In-page popover: the iframe sets the width and the panel draws the rounded frame. */
+.embed body {
+  width: auto;
+}
+
+.close {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  transition: background-color 100ms, color 100ms;
+}
+
+.close svg {
+  display: block;
+  margin: auto;
+}
+
+.close:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.embed .close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+}
+
+.preview {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qr {
+  width: 172px;
+  height: 172px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  border-radius: 8px;
+  /* Always white so the black-on-transparent code stays visible in dark mode. */
+  background: #ffffff;
+}
+
+.qr svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.error {
+  margin: 6px 0 0;
+  color: var(--error);
+  text-align: center;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.field > span {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+input:not([type="checkbox"]), select {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+input[type="color"] {
+  height: 30px;
+  padding: 2px;
+  cursor: pointer;
+}
+
+input:focus, select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.group {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.group summary {
+  cursor: pointer;
+  font-weight: 600;
+  user-select: none;
+}
+
+.group[open] summary {
+  margin-bottom: 8px;
+}
+
+.badge {
+  display: inline-block;
+  min-width: 18px;
+  padding: 0 5px;
+  margin-left: 4px;
+  border-radius: 9px;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-size: 11px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.wide { grid-column: 1 / -1; }
+
+.param-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.grid .check { margin-top: 0; }
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+button.link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+}
+
+button.remove {
+  width: 28px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.final code {
+  display: block;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 11px;
+  word-break: break-all;
+  max-height: 60px;
+  overflow: auto;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 8px;
+}
+
+.actions button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.primary {
+  border: 0;
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.secondary {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
