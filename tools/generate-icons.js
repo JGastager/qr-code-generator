@@ -14,8 +14,8 @@ const TOP = [0x5b, 0x8d, 0xff], BOTTOM = [0x1f, 0x4f, 0xd8]; // blue gradient
 const WHITE = [255, 255, 255];
 
 function sample(x, y, size) {
-  // Chrome guideline: 128px icon has ~16px padding; small sizes use (almost) the full canvas.
-  const pad = size >= 128 ? 0.11 : size >= 48 ? 0.06 : 0.02;
+  // Chrome guideline: 128px icon is 96px artwork with 16px transparent padding; small sizes use (almost) the full canvas.
+  const pad = size >= 128 ? 16 / 128 : size >= 48 ? 0.06 : 0.02;
   const half = 0.5 - pad, radius = half * 0.46;
   const inBg = box(x, y, 0.5, 0.5, half, radius) <= 0;
 

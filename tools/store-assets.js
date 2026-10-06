@@ -1,4 +1,4 @@
-// Renders the Chrome Web Store images into store/assets/ using the real popup UI.
+// Renders the Chrome Web Store images (and copies the store icon) into store/assets/ using the real popup UI.
 // Needs Chrome or Edge (set CHROME_PATH to override). Run: node tools/store-assets.js
 const fs = require('fs'), path = require('path'), os = require('os');
 const { execFileSync } = require('child_process');
@@ -178,6 +178,8 @@ function shoot(name, html, width, height, { dark = false } = {}) {
 }
 
 fs.mkdirSync(OUT, { recursive: true });
+fs.copyFileSync(path.join(ROOT, 'icons', 'icon128.png'), path.join(OUT, 'store-icon-128x128.png'));
+console.log(path.relative(ROOT, path.join(OUT, 'store-icon-128x128.png')));
 shoot('screenshot-1-light.png', browserShot(), 1280, 800);
 shoot('screenshot-2-dark.png', browserShot({ dark: true }), 1280, 800, { dark: true });
 shoot('promo-small-440x280.png', promo({ width: 440, height: 280, scale: 0.85, showPopup: false }), 440, 280);
