@@ -3,6 +3,8 @@
   "name": "QR Code Generator",
   "version": "1.0.0",
   "description": "Generate a downloadable SVG QR code for the current page, with optional UTM parameters.",
+  "homepage_url": "https://github.com/JGastager/qr-code-generator",
+  "minimum_chrome_version": "116",
   "permissions": ["activeTab", "scripting", "storage", "offscreen"],
   "web_accessible_resources": [
     {

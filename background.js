@@ -52,8 +52,9 @@ chrome.action.onClicked.addListener(async (tab) => {
 });
 
 // Drop the fallback popup once the tab navigates, so normal pages get the popover again.
+// (changeInfo.url needs the "tabs" permission; status is always reported.)
 chrome.tabs.onUpdated.addListener((tabId, info) => {
-  if (info.url) chrome.action.setPopup({ tabId, popup: '' });
+  if (info.status === 'loading') chrome.action.setPopup({ tabId, popup: '' }).catch(() => {});
 });
 
 chrome.runtime.onMessage.addListener((msg) => {

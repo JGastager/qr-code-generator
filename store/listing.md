@@ -1,0 +1,58 @@
+# Chrome Web Store listing
+
+Copy these into the Developer Dashboard.
+
+## Name
+
+QR Code Generator
+
+## Summary (max 132 characters)
+
+Generate a downloadable SVG QR code for the current page, with optional UTM parameters.
+
+## Category
+
+Tools
+
+## Description
+
+Turn the page you're on into a clean, print-ready QR code in one click.
+
+Click the toolbar icon and a small panel opens with a QR code for the current page. Download it as an SVG: black modules on a transparent background with no padding, ready for flyers, posters, slides and packaging.
+
+Features:
+• Pre-fills the current page's URL. You can edit it.
+• UTM fields (source, medium, campaign, term, content) and any number of custom query parameters
+• Parameters are remembered between uses (optional)
+• Error correction level: Low, Medium, Quartile or High
+• Copy the final URL with the parameters added
+• Works offline. Nothing leaves your browser.
+
+Privacy: no tracking, no analytics, no network requests. Settings are stored only on your device.
+
+## Single purpose
+
+Generate a QR code for the URL of the current tab, with optional tracking parameters, and download it as an SVG file.
+
+## Permission justifications
+
+- **activeTab**: Read the URL of the current tab when the user clicks the toolbar icon, and allow showing the panel on that tab.
+- **scripting**: Inject the script that shows the QR code panel on the current page when the user clicks the toolbar icon.
+- **storage**: Save the user's UTM parameters and error correction choice on their device.
+- **offscreen**: Detect the browser's light/dark mode (matchMedia isn't available in service workers) to show a matching toolbar icon.
+
+Remote code: No, all code is packaged in the extension.
+
+## Data usage
+
+Does not collect any user data. Tick the three certifications (no selling, no unrelated use, no creditworthiness use).
+
+## Privacy policy URL
+
+https://github.com/JGastager/qr-code-generator/blob/main/PRIVACY.md
+
+## Assets still needed
+
+- At least one screenshot, 1280x800 or 640x400 (PNG or JPEG)
+- Optional: small promo tile, 440x280
+- Store icon: `icons/icon128.png`
