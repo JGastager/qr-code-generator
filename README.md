@@ -34,6 +34,7 @@ Download the zip from the [latest release](https://github.com/JGastager/qr-code-
   - `icons/light/` and `icons/dark/`: monochrome toolbar glyphs
   - `icons/icon*.png`: colored tile for the extensions page and Web Store
 - `tools/package.js`: builds the Web Store zip
+- `tools/store-assets.js`: renders the Web Store screenshots and promo tiles into `store/assets/` with headless Chrome
 - `store/listing.md`: Web Store listing text and permission justifications
 
 ## Releasing
